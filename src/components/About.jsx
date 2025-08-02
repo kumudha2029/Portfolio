@@ -1,6 +1,7 @@
 import React from "react";
-import { FaReact, FaNodeJs, FaGithub } from 'react-icons/fa';
-import { SiMongodb, SiTailwindcss } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaGithub, FaHtml5, FaPython } from 'react-icons/fa';
+import { FaJava } from "react-icons/fa6";
+import { SiMongodb, SiStyledcomponents } from 'react-icons/si';
 import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -85,11 +86,15 @@ const About = () => {
           I'm Kumudha, a B.Tech IT student at GTEC with a CGPA of 8.2, passionate about MERN stack, Java, and Python for building smart, user-focused solutions.
         </AboutText>
         <AboutText>
-          I've developed real-world projects like a GPS-based attendance system and a multilingual chatbot, and I actively mentor peers and contribute to tech events.
+          I've developed real-world projects like a GPS-based attendance system and Resume builder, and I actively mentor peers and contribute to tech events.
         </AboutText>
 
         <ToolsHeading>Tools & Technologies</ToolsHeading>
         <ToolsIcons>
+          <IconWrapper title="HTML"><FaHtml5 /></IconWrapper>
+          <IconWrapper title="Styled components"><SiStyledcomponents /></IconWrapper>
+          <IconWrapper title="java"><FaJava /></IconWrapper>
+          <IconWrapper title="Python"><FaPython /></IconWrapper>
           <IconWrapper title="React"><FaReact /></IconWrapper>
           <IconWrapper title="Node.js"><FaNodeJs /></IconWrapper>
           <IconWrapper title="MongoDB"><SiMongodb /></IconWrapper>

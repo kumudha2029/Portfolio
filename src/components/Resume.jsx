@@ -55,7 +55,7 @@ const Name = styled.h1`
 `;
 
 const SubHeader = styled.div`
-  color: #555;
+  color: black;
   font-size: 0.95rem;
 `;
 
@@ -70,7 +70,7 @@ const ContactRow = styled.div`
 const IconLink = styled.a`
   display: inline-flex;
   align-items: center;
-  color: skyblue;
+  color: black;
   gap: 0.3rem;
   font-size: 0.9rem;
   text-decoration: none;
@@ -96,8 +96,7 @@ const List = styled.ul`
   padding-left: 0;
 `;
 
-const ListItem = styled.li`
-`;
+const ListItem = styled.li``;
 
 const DownloadButton = styled.button`
   background-color: white;
@@ -178,7 +177,7 @@ const Resume = () => {
         <Section>
           <SectionTitle>Skills</SectionTitle>
           <List>
-            <ListItem><strong>Languages:</strong> Java</ListItem>
+            <ListItem><strong>Languages:</strong> Java,Python</ListItem>
             <ListItem><strong>Web:</strong> HTML, CSS, JS, Node.js</ListItem>
             <ListItem><strong>Frameworks:</strong> React.js, Spring Boot</ListItem>
             <ListItem><strong>Databases:</strong> MongoDB</ListItem>
@@ -187,13 +186,25 @@ const Resume = () => {
         </Section>
 
         <Section>
-          <SectionTitle>Soft Skills</SectionTitle>
+          <SectionTitle>Projects</SectionTitle>
           <List>
-            <ListItem><FaCheck /> Communication</ListItem>
-            <ListItem><FaCheck /> Problem-solving</ListItem>
-            <ListItem><FaCheck /> Leadership</ListItem>
-            <ListItem><FaCheck /> Teamwork</ListItem>
-            <ListItem><FaCheck /> Time Management</ListItem>
+            <ListItem><strong>GPS-based Attendance System</strong> – React, Node.js, MongoDB</ListItem>
+            <ListItem><strong>Resume Builder</strong> – React, Node.js, MongoDB</ListItem>
+          </List>
+        </Section>
+
+        <Section>
+          <SectionTitle>Experience</SectionTitle>
+          <List>
+            <ListItem>
+              <strong>Full Stack Web Development Intern</strong><br />
+              EDU TANTR Ventures Pvt. Ltd., Bangalore<br />
+              <em>July 1 – July 31, 2025 (Offline, 30 days)</em>
+              <ul>
+                <li>Completed a full-stack internship focusing on MERN stack.</li>
+                <li>Built and deployed user-centric web applications.</li>
+              </ul>
+            </ListItem>
           </List>
         </Section>
 
@@ -202,14 +213,6 @@ const Resume = () => {
           <List>
             <ListItem>Google Cloud</ListItem>
             <ListItem>Certificate in computer operating system – BU-CII Programme</ListItem>
-          </List>
-        </Section>
-
-        <Section>
-          <SectionTitle>Projects</SectionTitle>
-          <List>
-            <ListItem><strong>GPS-based Attendance System</strong> – React, Node.js, MongoDB</ListItem>
-            <ListItem><strong>Resume Builder</strong> – React, Node.js, MongoDB</ListItem>
           </List>
         </Section>
       </Container>
