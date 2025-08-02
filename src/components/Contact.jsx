@@ -3,7 +3,6 @@ import { FiMail } from "react-icons/fi";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import styled from "styled-components";
 
-// Container for the whole section
 const ContactContainer = styled.div`
   text-align: center;
   color: white;
@@ -11,7 +10,6 @@ const ContactContainer = styled.div`
   padding-top:100px;
 `;
 
-// Icon row
 const IconBar = styled.div`
   display: flex;
   gap: 20px;
@@ -19,7 +17,6 @@ const IconBar = styled.div`
   margin-bottom: 30px;
 `;
 
-// Individual icon styling
 const IconLink = styled.a`
   color: white;
   font-size: 2rem;
@@ -49,13 +46,13 @@ const ContactInfo = () => {
   return (
     <ContactContainer>
       <IconBar>
-        <IconLink href="mailto:kumudha@example.com" title="Email" target="_blank">
+        <IconLink href="mailto:kumudha2920@gmail.com" title="Email" target="_blank" rel="noopener noreferrer">
           <FiMail />
         </IconLink>
-        <IconLink href="https://www.linkedin.com/in/your-linkedin-id" title="LinkedIn" target="_blank">
+        <IconLink href="https://www.linkedin.com/in/kumudhasri29" title="LinkedIn" target="_blank" rel="noopener noreferrer">
           <FaLinkedin />
         </IconLink>
-        <IconLink href="https://github.com/your-github-id" title="GitHub" target="_blank">
+        <IconLink href="https://github.com/kumudha2029" title="GitHub" target="_blank" rel="noopener noreferrer">
           <FaGithub />
         </IconLink>
       </IconBar>

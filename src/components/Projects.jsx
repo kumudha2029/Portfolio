@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
-// Styled Components
 const ProjectsSection = styled.section`
   padding: 60px 20px;
   color: white;
@@ -87,7 +86,6 @@ const projects = [
   }
 ];
 
-// Main Component
 const Projects = () => {
   return (
     <ProjectsSection id="projects">

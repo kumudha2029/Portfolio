@@ -76,7 +76,6 @@ const IconWrapper = styled.div`
   }
 `;
 
-// JSX Component
 const About = () => {
   return (
     <AboutSection>
