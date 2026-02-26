@@ -111,7 +111,7 @@ function Certificates() {
             <Title>Full Stack Web Development Internship</Title>
             <Org>EDU TANTR Ventures Pvt. Ltd. – July 2025</Org>
 
-            <ViewButton href="/EduTantr.pdf" target="_blank" rel="noopener noreferrer">
+            <ViewButton href="/EduTantr.png" target="_blank" rel="noopener noreferrer">
               View Certificate <FaExternalLinkAlt />
             </ViewButton>
           </Content>

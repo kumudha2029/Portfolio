@@ -17,9 +17,28 @@ const NavBarContainer = styled.nav`
   align-items: center;
 `;
 
-/* ---------- LOGO ---------- */
+/* ---------- LOGO SECTION ---------- */
 
-const Logo = styled.h2`
+const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+`;
+
+const LogoCircle = styled.div`
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #e7ecee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #101010;
+  font-weight: bold;
+  font-size: 1.2rem;
+`;
+
+const LogoText = styled.h2`
   color: white;
   margin: 0;
   font-size: 1.3rem;
@@ -58,7 +77,7 @@ const StyledLink = styled(NavLink)`
   color: #ffffff;
   text-decoration: none;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   position: relative;
   transition: 0.3s ease;
 
@@ -108,12 +127,19 @@ function Navbar() {
 
   return (
     <NavBarContainer>
-      <Logo>Kumudhasri</Logo>
 
+      {/* Logo Section */}
+      <LogoWrapper>
+        <LogoCircle>K</LogoCircle>
+        <LogoText>Kumudhasri</LogoText>
+      </LogoWrapper>
+
+      {/* Mobile Menu Icon */}
       <MenuIcon onClick={() => setOpen(!open)}>
         {open ? <FaTimes /> : <FaBars />}
       </MenuIcon>
 
+      {/* Navigation Links */}
       <NavList open={open}>
         <NavItem>
           <StyledLink to="/Home" onClick={() => setOpen(false)}>
@@ -139,6 +165,7 @@ function Navbar() {
           </StyledLink>
         </NavItem>
       </NavList>
+
     </NavBarContainer>
   );
 }

@@ -8,9 +8,8 @@ import html2pdf from "html2pdf.js";
 
 const Container = styled.div`
   width: 794px;
-  min-height: 1123px;
-  margin: 40px auto;
-  padding: 1.4rem 2rem;
+  margin: 0 auto;
+  padding: 1.2rem 1.6rem;
   background: #ffffff;
   color: #000;
   box-sizing: border-box;
@@ -23,34 +22,40 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 `;
 
 const Name = styled.h1`
-  font-size: 2.1rem;
+  font-size: 2rem;
   margin: 0;
   letter-spacing: 1px;
 `;
 
 const SubHeader = styled.p`
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   margin-top: 0.3rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #444;
 `;
 
+/* ===== Contact Section ===== */
+
 const ContactBlock = styled.div`
-  text-align: right;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
   font-size: 0.85rem;
-  line-height: 1.6;
+
+  svg {
+    font-size: 0.85rem;
+  }
 `;
 
 const ContactLine = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 0.5rem;
+  gap: 0.4rem;
 `;
 
 const ContactLink = styled.a`
@@ -61,14 +66,14 @@ const ContactLink = styled.a`
 /* ===== Sections ===== */
 
 const Section = styled.section`
-  margin-top: 0.9rem;
+  margin-top: 0.6rem;
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 1rem;
+  font-size: 0.95rem;
   border-bottom: 2px solid #000;
   padding-bottom: 0.2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 `;
 
 const List = styled.ul`
@@ -78,13 +83,15 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.45rem;
+  font-size: 0.88rem;
+  line-height: 1.4;
 `;
 
 const EduRow = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 `;
 
 /* ===== Download Button ===== */
@@ -99,7 +106,7 @@ const DownloadButton = styled.button`
   color: #fff;
   border: none;
   padding: 10px 22px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s;
@@ -120,7 +127,7 @@ const Resume = () => {
       margin: 0,
       filename: "Kumudhasri_Resume.pdf",
       image: { type: "jpeg", quality: 1 },
-      html2canvas: { scale: 2 },
+      html2canvas: { scale: 1 },
       jsPDF: { unit: "pt", format: "a4", orientation: "portrait" }
     };
 
@@ -138,8 +145,9 @@ const Resume = () => {
           </div>
 
           <ContactBlock>
+
             <ContactLine>
-              <FiMail /> 
+              <FiMail />
               <ContactLink href="mailto:kumudha2920@gmail.com">
                 kumudha2920@gmail.com
               </ContactLink>
@@ -154,36 +162,53 @@ const Resume = () => {
 
             <ContactLine>
               <FaLinkedin />
-              <ContactLink href="https://linkedin.com/in/kumudhasri29">
-                linkedin.com/in/kumudhasri29
+              <ContactLink
+                href="https://www.linkedin.com/in/kumudhasribalaji/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                linkedin.com/in/kumudhasribalaji
               </ContactLink>
             </ContactLine>
 
             <ContactLine>
               <FaGithub />
-              <ContactLink href="https://github.com/kumudha2029">
+              <ContactLink
+                href="https://github.com/kumudha2029"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 github.com/kumudha2029
               </ContactLink>
             </ContactLine>
 
             <ContactLine>
               <FaGlobe />
-              <ContactLink href="https://kumudhabalajiportfoliio.netlify.app/">
-                kumudhaportfolio.netlify.app
+              <ContactLink
+                href="https://portfolio-kumudhasris-projects.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                kumudhaportfolio.app
               </ContactLink>
             </ContactLine>
+
           </ContactBlock>
         </Header>
 
+        {/* Executive Summary */}
+
         <Section>
           <SectionTitle>Executive Summary</SectionTitle>
-          <p style={{ fontSize: "0.9rem", lineHeight: "1.6" }}>
+          <p style={{ fontSize: "0.88rem", lineHeight: "1.4" }}>
             Full Stack Developer (Fresher) with hands-on experience in MERN stack,
             REST API development using Node.js & Express, and MongoDB integration.
-            Comfortable working with React and JavaScript. Experienced in building
-            real-world applications and eager to contribute to data-driven products.
+            Strong foundation in Java and Python. Passionate about building
+            scalable and efficient web applications.
           </p>
         </Section>
+
+        {/* Education */}
 
         <Section>
           <SectionTitle>Education</SectionTitle>
@@ -194,12 +219,14 @@ const Resume = () => {
                 <span>2022 – 2026</span>
               </EduRow>
             </ListItem>
+
             <ListItem>
               <EduRow>
                 <span>High School – GGHSS, Arni</span>
                 <span>2020 – 2022</span>
               </EduRow>
             </ListItem>
+
             <ListItem>
               <EduRow>
                 <span>10th – Sri Bharathi Vidhyashram, Arni</span>
@@ -209,47 +236,68 @@ const Resume = () => {
           </List>
         </Section>
 
+        {/* Technical Skills */}
+
         <Section>
           <SectionTitle>Technical Skills</SectionTitle>
           <List>
-            <ListItem><strong>Languages:</strong> Java, Python</ListItem>
-            <ListItem><strong>Frontend:</strong> HTML, CSS, JavaScript, React</ListItem>
-            <ListItem><strong>Backend:</strong> Node.js, REST APIs, Spring Boot (Basic)</ListItem>
-            <ListItem><strong>Database:</strong> MongoDB</ListItem>
+            <ListItem><strong>Languages:</strong> Java, Python, JavaScript</ListItem>
+            <ListItem><strong>Frontend:</strong> HTML, CSS, React</ListItem>
+            <ListItem><strong>Backend:</strong> Node.js, Express.js, REST APIs, Spring Boot (Basic)</ListItem>
+            <ListItem><strong>Database:</strong> MongoDB, MySQL</ListItem>
             <ListItem><strong>Tools:</strong> Git, GitHub</ListItem>
           </List>
         </Section>
 
-        <Section>
-          <SectionTitle>Projects</SectionTitle>
-          <List>
-            <ListItem>
-              <strong>GPS-Based Attendance System</strong> – Location-based attendance validation with authentication.
-            </ListItem>
-            <ListItem>
-              <strong>Library Management System</strong> – CRUD operations with database integration.
-            </ListItem>
-            <ListItem>
-              <strong>Symposium Website</strong> – Responsive event management website.
-            </ListItem>
-          </List>
-        </Section>
+        {/* Projects */}
+
+        {/* ===== Projects ===== */}
+
+<Section>
+  <SectionTitle>Projects</SectionTitle>
+  <List>
+
+    <ListItem>
+      <strong>Automated Attendance System</strong><br/>
+      Developed a full-stack attendance management application using MERN stack with secure authentication and role-based access control.
+      Designed REST APIs and integrated MongoDB for real-time attendance tracking and efficient data management.
+    </ListItem>
+
+    <ListItem>
+      <strong>Library Management System</strong><br/>
+      Built a web-based CRUD application with role-based login to manage book issue, return, and search functionalities.
+      Implemented backend logic and database integration to ensure accurate record maintenance and smooth user interaction.
+    </ListItem>
+
+    <ListItem>
+      <strong>Symposium Event Management Website</strong><br/>
+      Created a responsive event registration platform using React with dynamic form handling and validation features.
+      Developed reusable UI components and optimized user experience for seamless event participation.
+    </ListItem>
+
+  </List>
+</Section>
+
+        {/* Experience */}
 
         <Section>
           <SectionTitle>Experience</SectionTitle>
           <List>
             <ListItem>
-              <strong>Full Stack Web Development Intern</strong> – EDU TANTR Ventures Pvt. Ltd.
-              <br />
-              <em>30 Days Offline Internship – July 2025</em>
+              <strong>Full Stack Web Development Intern</strong> – EDU TANTR Ventures Pvt. Ltd.<br/>
+              <em>July 2025</em><br/>
+              Worked on frontend UI, backend API integration,
+              and assisted in deployment processes.
             </ListItem>
           </List>
         </Section>
 
+        {/* Certifications */}
+
         <Section>
           <SectionTitle>Certifications</SectionTitle>
           <List>
-            <ListItem>Full Stack Web Development Internship – EDU TANTR (July 2025)</ListItem>
+            <ListItem>Full Stack Web Development Internship – EDU TANTR</ListItem>
             <ListItem>Java Virtual Internship – Besant Technologies</ListItem>
             <ListItem>Cloud Engineering – Google (Naan Mudhalvan)</ListItem>
             <ListItem>Data Analytics – Google (Naan Mudhalvan)</ListItem>
