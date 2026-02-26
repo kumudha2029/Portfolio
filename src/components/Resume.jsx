@@ -1,42 +1,20 @@
 import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { FiMail } from "react-icons/fi";
 import { FaPhone, FaGithub, FaLinkedin, FaGlobe } from "react-icons/fa";
 import html2pdf from "html2pdf.js";
 
-/* ===== Global Style ===== */
-
-const GlobalStyle = createGlobalStyle`
-  @page {
-    size: A4;
-    margin: 0;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-    background: #f2f2f2;
-    font-family: 'Inter', Arial, sans-serif;
-  }
-
-  /* Remove screen-only effects in PDF */
-  @media print {
-    body {
-      background: #ffffff;
-    }
-  }
-`;
-
 /* ===== A4 Container ===== */
 
 const Container = styled.div`
-  width: 794px;       /* A4 width in px */
-  height: 1123px;     /* A4 height in px */
-  margin: 0 auto;     /* No vertical margin to avoid extra page */
-  padding: 1.3rem 2rem;
+  width: 794px;
+  min-height: 1123px;
+  margin: 40px auto;
+  padding: 1.4rem 2rem;
   background: #ffffff;
   color: #000;
   box-sizing: border-box;
+  font-family: "Inter", Arial, sans-serif;
 `;
 
 /* ===== Header ===== */
@@ -45,21 +23,17 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 0.8rem;
-`;
-
-const NameBlock = styled.div`
-  text-align: left;
+  margin-bottom: 1rem;
 `;
 
 const Name = styled.h1`
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   margin: 0;
   letter-spacing: 1px;
 `;
 
 const SubHeader = styled.p`
-  font-size: 1rem;
+  font-size: 0.95rem;
   margin-top: 0.3rem;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -68,30 +42,20 @@ const SubHeader = styled.p`
 
 const ContactBlock = styled.div`
   text-align: right;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   line-height: 1.6;
 `;
 
 const ContactLine = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-`;
-
-const IconWrapper = styled.span`
-  width: 18px;
-  display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
 `;
 
 const ContactLink = styled.a`
   color: #000;
   text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-    color: #0077b5;
-  }
 `;
 
 /* ===== Sections ===== */
@@ -101,10 +65,10 @@ const Section = styled.section`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 1.1rem;
+  font-size: 1rem;
   border-bottom: 2px solid #000;
-  padding-bottom: 0.15rem;
-  margin-bottom: 0.4rem;
+  padding-bottom: 0.2rem;
+  margin-bottom: 0.5rem;
 `;
 
 const List = styled.ul`
@@ -114,23 +78,38 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.4rem;
 `;
-
-/* ===== Education Row ===== */
 
 const EduRow = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  font-size: 0.9rem;
 `;
 
-const EduRight = styled.span`
-  font-size: 0.85rem;
-  color: #555;
+/* ===== Download Button ===== */
+
+const ButtonWrapper = styled.div`
+  text-align: center;
+  margin: 30px 0 60px;
 `;
 
-/* ===== Main Component ===== */
+const DownloadButton = styled.button`
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background: #4f9cf9;
+  }
+`;
+
+/* ===== Component ===== */
 
 const Resume = () => {
 
@@ -139,7 +118,7 @@ const Resume = () => {
 
     const options = {
       margin: 0,
-      filename: "Kumudha_Resume.pdf",
+      filename: "Kumudhasri_Resume.pdf",
       image: { type: "jpeg", quality: 1 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: "pt", format: "a4", orientation: "portrait" }
@@ -150,172 +129,140 @@ const Resume = () => {
 
   return (
     <>
-      <GlobalStyle />
-
       <Container id="resume">
 
-        {/* ===== Header ===== */}
         <Header>
-          <NameBlock>
+          <div>
             <Name>KUMUDHASRI BALAJI</Name>
             <SubHeader>FULL STACK DEVELOPER</SubHeader>
-          </NameBlock>
+          </div>
 
           <ContactBlock>
             <ContactLine>
-              <IconWrapper><FiMail /></IconWrapper>
+              <FiMail /> 
               <ContactLink href="mailto:kumudha2920@gmail.com">
                 kumudha2920@gmail.com
               </ContactLink>
             </ContactLine>
 
             <ContactLine>
-              <IconWrapper><FaPhone /></IconWrapper>
+              <FaPhone />
               <ContactLink href="tel:+919597987710">
                 +91 95979 87710
               </ContactLink>
             </ContactLine>
 
             <ContactLine>
-              <IconWrapper><FaLinkedin /></IconWrapper>
-              <ContactLink href="https://linkedin.com/in/kumudhasri29" target="_blank" rel="noreferrer">
+              <FaLinkedin />
+              <ContactLink href="https://linkedin.com/in/kumudhasri29">
                 linkedin.com/in/kumudhasri29
               </ContactLink>
             </ContactLine>
 
             <ContactLine>
-              <IconWrapper><FaGithub /></IconWrapper>
-              <ContactLink href="https://github.com/kumudha2029" target="_blank" rel="noreferrer">
+              <FaGithub />
+              <ContactLink href="https://github.com/kumudha2029">
                 github.com/kumudha2029
               </ContactLink>
             </ContactLine>
 
             <ContactLine>
-              <IconWrapper><FaGlobe /></IconWrapper>
-              <ContactLink href="https://kumudhabalajiportfoliio.netlify.app/" target="_blank" rel="noreferrer">
+              <FaGlobe />
+              <ContactLink href="https://kumudhabalajiportfoliio.netlify.app/">
                 kumudhaportfolio.netlify.app
               </ContactLink>
             </ContactLine>
           </ContactBlock>
         </Header>
 
-        {/* ===== Executive Summary ===== */}
         <Section>
           <SectionTitle>Executive Summary</SectionTitle>
-          <p>
-Full Stack Developer (Fresher) with hands-on experience in MERN stack, REST API development using Node.js & Express, and MongoDB integration. Comfortable working with React, JavaScript, and debugging UI issues. Experienced in building real-world applications and eager to contribute to data-driven products.
+          <p style={{ fontSize: "0.9rem", lineHeight: "1.6" }}>
+            Full Stack Developer (Fresher) with hands-on experience in MERN stack,
+            REST API development using Node.js & Express, and MongoDB integration.
+            Comfortable working with React and JavaScript. Experienced in building
+            real-world applications and eager to contribute to data-driven products.
           </p>
         </Section>
 
-        {/* ===== Education ===== */}
         <Section>
           <SectionTitle>Education</SectionTitle>
           <List>
             <ListItem>
               <EduRow>
-                <span>B.Tech Information Technology – GTEC, Vellore (CGPA: 8.2)</span>
-                <EduRight>2022 – 2026</EduRight>
+                <span>B.Tech IT – GTEC, Vellore (CGPA: 8.2)</span>
+                <span>2022 – 2026</span>
               </EduRow>
             </ListItem>
-
             <ListItem>
               <EduRow>
                 <span>High School – GGHSS, Arni</span>
-                <EduRight>2020 – 2022</EduRight>
+                <span>2020 – 2022</span>
               </EduRow>
             </ListItem>
-
             <ListItem>
               <EduRow>
                 <span>10th – Sri Bharathi Vidhyashram, Arni</span>
-                <EduRight>2019 – 2020</EduRight>
+                <span>2019 – 2020</span>
               </EduRow>
             </ListItem>
           </List>
         </Section>
 
-        {/* ===== Skills ===== */}
         <Section>
           <SectionTitle>Technical Skills</SectionTitle>
           <List>
             <ListItem><strong>Languages:</strong> Java, Python</ListItem>
-            <ListItem><strong>Frontend:</strong> HTML, CSS, JavaScript, React.js</ListItem>
-            <ListItem><strong>Backend:</strong> Node.js, REST API development,Spring Boot (Basic)</ListItem>
+            <ListItem><strong>Frontend:</strong> HTML, CSS, JavaScript, React</ListItem>
+            <ListItem><strong>Backend:</strong> Node.js, REST APIs, Spring Boot (Basic)</ListItem>
             <ListItem><strong>Database:</strong> MongoDB</ListItem>
             <ListItem><strong>Tools:</strong> Git, GitHub</ListItem>
           </List>
         </Section>
 
-        {/* ===== Projects ===== */}
         <Section>
           <SectionTitle>Projects</SectionTitle>
           <List>
             <ListItem>
-              <strong>GPS-Based Attendance System</strong>
-              <ul>
-                <li>Location-based attendance validation</li>
-                <li>Authentication and real-time attendance flow</li>
-              </ul>
+              <strong>GPS-Based Attendance System</strong> – Location-based attendance validation with authentication.
             </ListItem>
-
             <ListItem>
-              <strong>Library Management System</strong>
-              <ul>
-                <li>CRUD operations with DB integration</li>
-              </ul>
+              <strong>Library Management System</strong> – CRUD operations with database integration.
             </ListItem>
-
             <ListItem>
-              <strong>Symposium Website</strong>
-              <ul>
-                <li>Responsive event website</li>
-              </ul>
+              <strong>Symposium Website</strong> – Responsive event management website.
             </ListItem>
           </List>
         </Section>
 
-        {/* ===== Experience ===== */}
         <Section>
           <SectionTitle>Experience</SectionTitle>
           <List>
             <ListItem>
-              <strong>Full Stack Web Development Intern</strong><br />
-              EDU TANTR Ventures Pvt. Ltd.<br />
+              <strong>Full Stack Web Development Intern</strong> – EDU TANTR Ventures Pvt. Ltd.
+              <br />
               <em>30 Days Offline Internship – July 2025</em>
             </ListItem>
           </List>
         </Section>
 
-        {/* ===== Certifications ===== */}
         <Section>
           <SectionTitle>Certifications</SectionTitle>
           <List>
-            <ListItem><strong>Full Stack Web Development Internship</strong> – EDU TANTR – July 2025</ListItem>
-            <ListItem><strong>Java Virtual Internship</strong> – Besant Technologies</ListItem>
-            <ListItem><strong>Cloud Engineering</strong> – Google (Naan Mudhalvan)</ListItem>
-            <ListItem><strong>Data Analytics</strong> – Google (Naan Mudhalvan)</ListItem>
+            <ListItem>Full Stack Web Development Internship – EDU TANTR (July 2025)</ListItem>
+            <ListItem>Java Virtual Internship – Besant Technologies</ListItem>
+            <ListItem>Cloud Engineering – Google (Naan Mudhalvan)</ListItem>
+            <ListItem>Data Analytics – Google (Naan Mudhalvan)</ListItem>
           </List>
         </Section>
 
       </Container>
 
-      {/* ===== Download Button ===== */}
-      <div style={{ textAlign: "center", margin: "15px" }}>
-        <button
-          onClick={downloadPDF}
-          style={{
-            background: "#000",
-            color: "#fff",
-            border: "none",
-            padding: "8px 18px",
-            fontSize: "1rem",
-            borderRadius: "6px",
-            cursor: "pointer"
-          }}
-        >
+      <ButtonWrapper>
+        <DownloadButton onClick={downloadPDF}>
           Download as PDF
-        </button>
-      </div>
+        </DownloadButton>
+      </ButtonWrapper>
     </>
   );
 };

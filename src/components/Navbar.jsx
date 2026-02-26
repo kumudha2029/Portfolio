@@ -1,80 +1,145 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+import { FaBars, FaTimes } from "react-icons/fa";
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    padding: 0;
-    background-image: url('/background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    font-family: 'Pacifico', cursive;
-    color: white;
-  }
-`;
+/* ---------- NAV CONTAINER ---------- */
 
 const NavBarContainer = styled.nav`
-  background-color: #1e1e2f;
-  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(16, 16, 16, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 1.2rem 2.5rem;
   display: flex;
-  justify-content: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  justify-content: space-between;
+  align-items: center;
 `;
+
+/* ---------- LOGO ---------- */
+
+const Logo = styled.h2`
+  color: white;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+`;
+
+/* ---------- NAV LIST ---------- */
 
 const NavList = styled.ul`
   list-style: none;
   display: flex;
   gap: 2rem;
   margin: 0;
-  padding-left: 50px;
+  padding: 0;
+
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #101010;
+    flex-direction: column;
+    width: 220px;
+    padding: 30px;
+    transform: ${({ open }) =>
+      open ? "translateX(0)" : "translateX(100%)"};
+    transition: transform 0.3s ease;
+  }
 `;
 
 const NavItem = styled.li``;
 
-const StyledLink = styled(Link)`
+/* ---------- LINK ---------- */
+
+const StyledLink = styled(NavLink)`
   color: #ffffff;
   text-decoration: none;
   font-weight: 500;
   font-size: 1.1rem;
   position: relative;
-  transition: color 0.3s;
+  transition: 0.3s ease;
+
+  &.active {
+    color: #61aede;
+  }
 
   &:hover {
-    color: #00d8ff;
+    color: #61aede;
   }
 
+  /* Smooth underline */
   &::after {
     content: "";
-    display: block;
-    height: 2px;
-    background: #00d8ff;
-    width: 0%;
-    transition: width 0.3s ease-in-out;
     position: absolute;
-    bottom: -4px;
     left: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 0%;
+    background: #61aede;
+    transition: width 0.3s ease;
   }
 
-  &:hover::after {
+  &:hover::after,
+  &.active::after {
     width: 100%;
   }
 `;
 
+/* ---------- MOBILE MENU ICON ---------- */
+
+const MenuIcon = styled.div`
+  display: none;
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+/* ---------- COMPONENT ---------- */
+
 function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <>
-      <GlobalStyle />
-      <NavBarContainer>
-        <NavList>
-          <NavItem><StyledLink to="/Home">Home</StyledLink></NavItem>
-          <NavItem><StyledLink to="/About">About</StyledLink></NavItem>
-          <NavItem><StyledLink to="/Projects">Projects</StyledLink></NavItem>
-          <NavItem><StyledLink to="/Contact">Contact</StyledLink></NavItem>
-        </NavList>
-      </NavBarContainer>
-    </>
+    <NavBarContainer>
+      <Logo>Kumudhasri</Logo>
+
+      <MenuIcon onClick={() => setOpen(!open)}>
+        {open ? <FaTimes /> : <FaBars />}
+      </MenuIcon>
+
+      <NavList open={open}>
+        <NavItem>
+          <StyledLink to="/Home" onClick={() => setOpen(false)}>
+            Home
+          </StyledLink>
+        </NavItem>
+
+        <NavItem>
+          <StyledLink to="/About" onClick={() => setOpen(false)}>
+            About
+          </StyledLink>
+        </NavItem>
+
+        <NavItem>
+          <StyledLink to="/Projects" onClick={() => setOpen(false)}>
+            Projects
+          </StyledLink>
+        </NavItem>
+
+        <NavItem>
+          <StyledLink to="/Certifications" onClick={() => setOpen(false)}>
+            Certifications
+          </StyledLink>
+        </NavItem>
+      </NavList>
+    </NavBarContainer>
   );
 }
 

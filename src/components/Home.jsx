@@ -1,76 +1,184 @@
 import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { FiMail } from "react-icons/fi";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 
-/* ---------- GLOBAL ---------- */
+/* ---------- ANIMATIONS ---------- */
 
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    font-family: "Poppins", sans-serif;
-    background: #f7efe5;
-    color: #333;
+const fadeUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 `;
 
+const fadeInScale = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
 
-const Hero = styled.div`
+const float = keyframes`
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+`;
+
+/* ---------- HERO ---------- */
+
+const Hero = styled.section`
+  min-height: 90vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 80px 80px;
+  justify-content: center;
+  gap: 90px;
+  padding: 80px 40px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     flex-direction: column;
     text-align: center;
+    gap: 60px;
+    padding: 60px 20px;
   }
 `;
 
 const Left = styled.div`
-  max-width: 400px;
+  max-width: 540px;
 `;
 
-
+/* ---------- TEXT ---------- */
 
 const Name = styled.h1`
-  font-size: 3.5rem;
-  margin: 10px 0;
+  font-size: 4.3rem;
+  font-weight: 900;
+  margin: 0;
+  line-height: 1.1;
+  animation: ${fadeUp} 0.8s ease forwards;
+
+  @media (max-width: 900px) {
+    font-size: 3rem;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 2.3rem;
+  }
+`;
+
+const RoleBadge = styled.h2`
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-top: 18px;
+  color: #111;
+  animation: ${fadeUp} 1s ease forwards;
 `;
 
 const Description = styled.p`
-  color: #555;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-top: 22px;
+  color: #333;
+  animation: ${fadeUp} 1.2s ease forwards;
 `;
 
-const RoleBadge = styled.div`
-  display: inline-block;
-  border: 2px solid #0f0d0d;
-  padding: 12px 25px;
-  margin-top: 20px;
-  font-weight: 600;
-  font-size: 1.2rem;
+/* ---------- BUTTONS ---------- */
+
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 18px;
+  margin-top: 35px;
+  animation: ${fadeUp} 1.4s ease forwards;
+
+  @media (max-width: 900px) {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 `;
 
-/* ---------- BUTTON ---------- */
-
-const Button = styled.button`
-  margin-top: 30px;
-  padding: 14px 30px;
-  border-radius: 25px;
+const PrimaryButton = styled.button`
+  padding: 14px 34px;
+  border-radius: 50px;
   border: none;
-  background: black;
+  background: #1f1f1f;
   color: white;
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    background: #4f9cf9;
+    transform: translateY(-4px);
+  }
 `;
 
-/* ---------- RIGHT IMAGE ---------- */
+const OutlineButton = styled.button`
+  padding: 14px 34px;
+  border-radius: 50px;
+  border: 2px solid #1f1f1f;
+  background: transparent;
+  color: #1f1f1f;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+  &:hover {
+    background: #1f1f1f;
+    color: white;
+    transform: translateY(-4px);
+  }
+`;
+
+/* ---------- CONTACT ICONS ---------- */
+
+const ContactIcons = styled.div`
+  display: flex;
+  gap: 22px;
+  margin-top: 25px;
+  animation: ${fadeUp} 1.6s ease forwards;
+
+  @media (max-width: 900px) {
+    justify-content: center;
+  }
+`;
+
+const IconLink = styled.a`
+  font-size: 1.9rem;
+  color: #1f1f1f;
+  transition: 0.3s ease;
+
+  &:hover {
+    color: #4f9cf9;
+    transform: translateY(-4px) scale(1.05);
+  }
+`;
+
+/* ---------- IMAGE ---------- */
 
 const ImageWrapper = styled.div`
-  width: 350px;
-  height: 350px;
+  width: 360px;
+  height: 360px;
   border-radius: 50%;
   overflow: hidden;
-  border: 8px solid white;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  border: 12px solid white;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.15);
+
+  animation:
+    ${fadeInScale} 1.2s ease forwards,
+    ${float} 6s ease-in-out infinite;
+
+  @media (max-width: 900px) {
+    width: 270px;
+    height: 270px;
+  }
 `;
 
 const ProfileImage = styled.img`
@@ -82,32 +190,57 @@ const ProfileImage = styled.img`
 /* ---------- COMPONENT ---------- */
 
 function Home() {
+  const navigate = useNavigate();
+
   return (
-    <>
-      <GlobalStyle />
+    <Hero>
+      <Left>
+        <Name>Hi, I'm Kumudhasri</Name>
 
+        <RoleBadge>Full Stack Developer</RoleBadge>
 
-      <Hero>
-        <Left>
+        <Description>
+          I build modern web applications using MERN stack and Java.
+          I focus on clean design, performance, and solving real-world problems.
+        </Description>
 
-          <Name>Kumudhasri</Name>
+        <ButtonGroup>
+          <PrimaryButton onClick={() => navigate("/Projects")}>
+            View Projects
+          </PrimaryButton>
 
-          <Description>
-            Passionate developer building modern web applications
-            using MERN stack and Java. I love solving real-world problems.
-          </Description>
+          <OutlineButton onClick={() => navigate("/Resume")}>
+            View Resume
+          </OutlineButton>
+        </ButtonGroup>
 
-          <RoleBadge>Full Stack Developer</RoleBadge>
+        <ContactIcons>
+          <IconLink href="mailto:kumudha2920@gmail.com">
+            <FiMail />
+          </IconLink>
 
-          <br />
-          <Button>View Projects</Button>
-        </Left>
+          <IconLink
+            href="https://www.linkedin.com/in/kumudhasribalaji/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin />
+          </IconLink>
 
-        <ImageWrapper>
-          <ProfileImage src="/girllaptop.png" alt="profile" />
-        </ImageWrapper>
-      </Hero>
-    </>
+          <IconLink
+            href="https://github.com/kumudha2029"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub />
+          </IconLink>
+        </ContactIcons>
+      </Left>
+
+      <ImageWrapper>
+        <ProfileImage src="/girllaptop.png" alt="profile" />
+      </ImageWrapper>
+    </Hero>
   );
 }
 
