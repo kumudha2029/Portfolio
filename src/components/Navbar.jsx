@@ -17,7 +17,7 @@ const NavBarContainer = styled.nav`
   align-items: center;
 `;
 
-/* ---------- LOGO SECTION ---------- */
+/* ---------- LOGO ---------- */
 
 const LogoWrapper = styled.div`
   display: flex;
@@ -71,9 +71,37 @@ const NavList = styled.ul`
 
 const NavItem = styled.li``;
 
-/* ---------- LINK ---------- */
+/* ---------- LINKS ---------- */
 
-const StyledLink = styled(NavLink)`
+const ScrollLink = styled.a`
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.05rem;
+  position: relative;
+  transition: 0.3s ease;
+
+  &:hover {
+    color: #61aede;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 2px;
+    width: 0%;
+    background: #61aede;
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+`;
+
+const RouteLink = styled(NavLink)`
   color: #ffffff;
   text-decoration: none;
   font-weight: 500;
@@ -89,7 +117,6 @@ const StyledLink = styled(NavLink)`
     color: #61aede;
   }
 
-  /* Smooth underline */
   &::after {
     content: "";
     position: absolute;
@@ -107,7 +134,7 @@ const StyledLink = styled(NavLink)`
   }
 `;
 
-/* ---------- MOBILE MENU ICON ---------- */
+/* ---------- MOBILE ICON ---------- */
 
 const MenuIcon = styled.div`
   display: none;
@@ -127,45 +154,40 @@ function Navbar() {
 
   return (
     <NavBarContainer>
-
-      {/* Logo Section */}
       <LogoWrapper>
         <LogoCircle>K</LogoCircle>
         <LogoText>Kumudhasri</LogoText>
       </LogoWrapper>
 
-      {/* Mobile Menu Icon */}
       <MenuIcon onClick={() => setOpen(!open)}>
         {open ? <FaTimes /> : <FaBars />}
       </MenuIcon>
 
-      {/* Navigation Links */}
       <NavList open={open}>
         <NavItem>
-          <StyledLink to="/Home" onClick={() => setOpen(false)}>
+          <ScrollLink href="#home" onClick={() => setOpen(false)}>
             Home
-          </StyledLink>
+          </ScrollLink>
         </NavItem>
 
         <NavItem>
-          <StyledLink to="/About" onClick={() => setOpen(false)}>
+          <ScrollLink href="#about" onClick={() => setOpen(false)}>
             About
-          </StyledLink>
+          </ScrollLink>
         </NavItem>
 
         <NavItem>
-          <StyledLink to="/Projects" onClick={() => setOpen(false)}>
+          <ScrollLink href="#projects" onClick={() => setOpen(false)}>
             Projects
-          </StyledLink>
+          </ScrollLink>
         </NavItem>
 
         <NavItem>
-          <StyledLink to="/Certifications" onClick={() => setOpen(false)}>
+          <ScrollLink href="#certifications" onClick={() => setOpen(false)}>
             Certifications
-          </StyledLink>
+          </ScrollLink>
         </NavItem>
       </NavList>
-
     </NavBarContainer>
   );
 }

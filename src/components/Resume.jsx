@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { FiMail } from "react-icons/fi";
-import { FaPhone, FaGithub, FaLinkedin, FaGlobe } from "react-icons/fa";
+import { FaPhone, FaGithub, FaLinkedin, FaGlobe, FaArrowLeft } from "react-icons/fa";
 import html2pdf from "html2pdf.js";
 
 /* ===== A4 Container ===== */
@@ -43,7 +44,6 @@ const SubHeader = styled.p`
 
 const ContactBlock = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
   gap: 0.4rem;
   font-size: 0.85rem;
 
@@ -94,10 +94,12 @@ const EduRow = styled.div`
   font-size: 0.88rem;
 `;
 
-/* ===== Download Button ===== */
+/* ===== Buttons ===== */
 
 const ButtonWrapper = styled.div`
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
   margin: 30px 0 60px;
 `;
 
@@ -116,9 +118,30 @@ const DownloadButton = styled.button`
   }
 `;
 
+const BackButton = styled.button`
+  background: transparent;
+  color: #111;
+  border: 2px solid #111;
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    background: #111;
+    color: #fff;
+  }
+`;
+
 /* ===== Component ===== */
 
 const Resume = () => {
+
+  const navigate = useNavigate();
 
   const downloadPDF = () => {
     const element = document.getElementById("resume");
@@ -145,7 +168,6 @@ const Resume = () => {
           </div>
 
           <ContactBlock>
-
             <ContactLine>
               <FiMail />
               <ContactLink href="mailto:kumudha2920@gmail.com">
@@ -162,41 +184,28 @@ const Resume = () => {
 
             <ContactLine>
               <FaLinkedin />
-              <ContactLink
-                href="https://www.linkedin.com/in/kumudhasribalaji/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <ContactLink href="https://www.linkedin.com/in/kumudhasribalaji/" target="_blank" rel="noopener noreferrer">
                 linkedin.com/in/kumudhasribalaji
               </ContactLink>
             </ContactLine>
 
             <ContactLine>
               <FaGithub />
-              <ContactLink
-                href="https://github.com/kumudha2029"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <ContactLink href="https://github.com/kumudha2029" target="_blank" rel="noopener noreferrer">
                 github.com/kumudha2029
               </ContactLink>
             </ContactLine>
 
             <ContactLine>
               <FaGlobe />
-              <ContactLink
-                href="https://portfolio-kumudhasris-projects.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <ContactLink href="https://portfolio-kumudhasris-projects.vercel.app/" target="_blank" rel="noopener noreferrer">
                 kumudhaportfolio.app
               </ContactLink>
             </ContactLine>
-
           </ContactBlock>
         </Header>
 
-        {/* Executive Summary */}
+         {/* Executive Summary */}
 
         <Section>
           <SectionTitle>Executive Summary</SectionTitle>
@@ -307,6 +316,11 @@ const Resume = () => {
       </Container>
 
       <ButtonWrapper>
+        <BackButton onClick={() => navigate("/")}>
+          <FaArrowLeft />
+          Back
+        </BackButton>
+
         <DownloadButton onClick={downloadPDF}>
           Download as PDF
         </DownloadButton>

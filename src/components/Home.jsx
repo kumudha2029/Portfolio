@@ -55,25 +55,33 @@ const Hero = styled.section`
 const Left = styled.div`
   max-width: 540px;
 `;
+const typing = keyframes`
+  from { max-width: 0 }
+  to { max-width: 18ch }
+`;
 
-/* ---------- TEXT ---------- */
+const blink = keyframes`
+  0%, 100% { border-color: transparent; }
+  50% { border-color: #4f9cf9; }
+`;
 
 const Name = styled.h1`
-  font-size: 4.3rem;
+  font-size: 3rem;
   font-weight: 900;
   margin: 0;
   line-height: 1.1;
-  animation: ${fadeUp} 0.8s ease forwards;
 
-  @media (max-width: 900px) {
-    font-size: 3rem;
-  }
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
 
-  @media (max-width: 500px) {
-    font-size: 2.3rem;
-  }
+  border-right: 3px solid #4f9cf9;
+
+  max-width: 0;
+  animation:
+    ${typing} 2s steps(18, end) forwards,
+    ${blink} 0.8s step-end infinite;
 `;
-
 const RoleBadge = styled.h2`
   font-size: 1.9rem;
   font-weight: 700;
@@ -123,6 +131,7 @@ const PrimaryButton = styled.button`
 const OutlineButton = styled.button`
   padding: 14px 34px;
   border-radius: 50px;
+  border-radius: 50px;
   border: 2px solid #1f1f1f;
   background: transparent;
   color: #1f1f1f;
@@ -170,15 +179,9 @@ const ImageWrapper = styled.div`
   overflow: hidden;
   border: 12px solid white;
   box-shadow: 0 25px 70px rgba(0,0,0,0.15);
-
   animation:
     ${fadeInScale} 1.2s ease forwards,
-    ${float} 6s ease-in-out infinite;
-
-  @media (max-width: 900px) {
-    width: 270px;
-    height: 270px;
-  }
+    ${float} 2s ease-in-out infinite;
 `;
 
 const ProfileImage = styled.img`
@@ -191,6 +194,13 @@ const ProfileImage = styled.img`
 
 function Home() {
   const navigate = useNavigate();
+
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <Hero>
@@ -205,17 +215,17 @@ function Home() {
         </Description>
 
         <ButtonGroup>
-          <PrimaryButton onClick={() => navigate("/Projects")}>
+          <PrimaryButton onClick={() => scrollToSection("projects")}>
             View Projects
           </PrimaryButton>
 
-          <OutlineButton onClick={() => navigate("/Resume")}>
+          <OutlineButton onClick={() => navigate("/resume")}>
             View Resume
           </OutlineButton>
         </ButtonGroup>
 
         <ContactIcons>
-          <IconLink href="mailto:kumudha2920@gmail.com">
+          <IconLink href="mailto:kumudha2920@gmail.com" aria-label="Email">
             <FiMail />
           </IconLink>
 
@@ -223,6 +233,7 @@ function Home() {
             href="https://www.linkedin.com/in/kumudhasribalaji/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="LinkedIn"
           >
             <FaLinkedin />
           </IconLink>
@@ -231,6 +242,7 @@ function Home() {
             href="https://github.com/kumudha2029"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="GitHub"
           >
             <FaGithub />
           </IconLink>
@@ -238,7 +250,7 @@ function Home() {
       </Left>
 
       <ImageWrapper>
-        <ProfileImage src="/girllaptop.png" alt="profile" />
+        <ProfileImage src="/girllaptop.png" alt="Kumudhasri profile" />
       </ImageWrapper>
     </Hero>
   );
