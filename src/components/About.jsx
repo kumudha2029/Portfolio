@@ -98,15 +98,15 @@ const About = () => {
         <AboutHeading>About Me</AboutHeading>
 
         <AboutText>
-          I'm Kumudhasri, a B.Tech Information Technology student with a CGPA of 8.2.
-          I build practical web applications using the MERN stack, Java, and Python.
-        </AboutText>
+  I'm Kumudhasri, a B.Tech Information Technology student with a CGPA of 8.2.
+  I build practical web applications using the MERN stack, Java, and Python.
+</AboutText>
 
-        <AboutText>
-          My projects include a GPS-based Attendance System, Library Management System,
-          and Symposium Website. Currently, I'm refining these projects for academic
-          reviews and internship opportunities.
-        </AboutText>
+<AboutText>
+  My projects include a Library Management System, Attendance System and a Symposium Website.
+  I focus on building clean, user-friendly, and real-world problem-solving applications.
+  Currently, I'm refining my skills and strengthening my projects for impactful opportunities.
+</AboutText>
 
         <ToolsHeading>Tools & Technologies</ToolsHeading>
 

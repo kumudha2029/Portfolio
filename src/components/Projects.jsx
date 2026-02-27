@@ -154,17 +154,22 @@ const projects = [
     title: "Attendance System",
     image: "/attendance.png",
     description:
-      "A MERN stack application that validates student attendance using real-time GPS location within a defined radius to prevent proxy attendance.",
-    tech: "React, Node.js, Express, MongoDB",
-    role: "Developed full MERN stack application with GPS validation logic.",
-    challenges:
-      "Handling real-time location accuracy and preventing proxy attendance.",
-    features: [
-      "Real-time GPS tracking",
-      "Location radius validation",
-      "Teacher dashboard",
-      "Student login system"
-    ],
+  "A MERN stack application designed to manage and validate student attendance efficiently through a secure and structured system.",
+
+tech: "React, Node.js, Express, MongoDB",
+
+role:
+  "Developed the complete MERN stack application including frontend interface, backend APIs, and database integration.",
+
+challenges:
+  "Implementing secure authentication, handling real-time attendance updates, and managing role-based access control.",
+
+features: [
+  "Secure student login system",
+  "Teacher dashboard for attendance management",
+  "Real-time attendance updates",
+  "Role-based access control"
+],
     github: "https://github.com/kumudha2029/GPSATTENDANCE.git",
     live: "https://attendancesystembykumudha.netlify.app/"
   },
@@ -172,15 +177,23 @@ const projects = [
     title: "Library Management System",
     image: "/library.png",
     description:
-      "A web-based system to manage books, users, and issue/return records.",
-    tech: "MERN Stack",
-    role: "Built UI and backend CRUD operations.",
-    challenges: "Managing role-based authentication.",
-    features: [
-      "Book issue/return system",
-      "Admin dashboard",
-      "User management"
-    ],
+    "A full-stack web application to manage books, users, and borrowing records with a unique code-based book return validation system.",
+
+  tech: "React, Node.js, Express, MongoDB",
+
+  role:
+    "Designed and developed the complete MERN stack application, including secure authentication, book inventory management, and a unique code-based return mechanism.",
+
+  challenges:
+    "Implementing secure role-based access control and designing a unique code validation system to prevent incorrect or unauthorized book returns.",
+
+  features: [
+    "Unique return code generated for each issued book",
+    "Code-based book return validation system",
+    "Admin dashboard for book and user management",
+    "Role-based authentication (Admin/User)",
+    "Real-time book availability updates"
+  ],
     github: "https://github.com/kumudha2029/Library-Management-System.git",
     live: "https://library-management-app-pied.vercel.app"
   },

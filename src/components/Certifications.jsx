@@ -122,7 +122,7 @@ function Certificates() {
           <Image src="/Beasant.png" alt="Java Internship Certificate" />
           <Content>
             <Title>Java Virtual Internship</Title>
-            <Org>Besant Technologies</Org>
+            <Org>Besant Technologies – January 2026</Org>
 
             <ViewButton href="/Beasant.png" target="_blank" rel="noopener noreferrer">
               View Certificate <FaExternalLinkAlt />
