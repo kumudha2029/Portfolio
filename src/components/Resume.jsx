@@ -15,6 +15,7 @@ const Container = styled.div`
   color: #000;
   box-sizing: border-box;
   font-family: "Inter", Arial, sans-serif;
+  margin-top:50px;
 `;
 
 /* ===== Header ===== */
