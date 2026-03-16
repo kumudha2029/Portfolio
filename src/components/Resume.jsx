@@ -15,7 +15,7 @@ const Container = styled.div`
   color: #000;
   box-sizing: border-box;
   font-family: "Inter", Arial, sans-serif;
-  margin-top:50px;
+  margin-top: 50px;
 `;
 
 /* ===== Header ===== */
@@ -150,9 +150,24 @@ const Resume = () => {
     const options = {
       margin: 0,
       filename: "Kumudhasri_Resume.pdf",
-      image: { type: "jpeg", quality: 1 },
-      html2canvas: { scale: 1 },
-      jsPDF: { unit: "pt", format: "a4", orientation: "portrait" }
+
+      image: {
+        type: "png",
+        quality: 1
+      },
+
+      html2canvas: {
+        scale: 3,
+        useCORS: true,
+        letterRendering: true,
+        scrollY: 0
+      },
+
+      jsPDF: {
+        unit: "pt",
+        format: "a4",
+        orientation: "portrait"
+      }
     };
 
     html2pdf().set(options).from(element).save();
@@ -185,28 +200,40 @@ const Resume = () => {
 
             <ContactLine>
               <FaLinkedin />
-              <ContactLink href="https://www.linkedin.com/in/kumudhasribalaji/" target="_blank" rel="noopener noreferrer">
+              <ContactLink
+                href="https://www.linkedin.com/in/kumudhasribalaji/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 linkedin.com/in/kumudhasribalaji
               </ContactLink>
             </ContactLine>
 
             <ContactLine>
               <FaGithub />
-              <ContactLink href="https://github.com/kumudha2029" target="_blank" rel="noopener noreferrer">
+              <ContactLink
+                href="https://github.com/kumudha2029"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 github.com/kumudha2029
               </ContactLink>
             </ContactLine>
 
             <ContactLine>
               <FaGlobe />
-              <ContactLink href="https://portfolio-kumudhasris-projects.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <ContactLink
+                href="https://portfolio-kumudhasris-projects.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 kumudhaportfolio.app
               </ContactLink>
             </ContactLine>
           </ContactBlock>
         </Header>
 
-         {/* Executive Summary */}
+        {/* Executive Summary */}
 
         <Section>
           <SectionTitle>Executive Summary</SectionTitle>
@@ -223,6 +250,7 @@ const Resume = () => {
         <Section>
           <SectionTitle>Education</SectionTitle>
           <List>
+
             <ListItem>
               <EduRow>
                 <span>B.Tech IT – GTEC, Vellore (CGPA: 8.2)</span>
@@ -243,17 +271,18 @@ const Resume = () => {
                 <span>2019 – 2020</span>
               </EduRow>
             </ListItem>
+
           </List>
         </Section>
 
-        {/* Technical Skills */}
+        {/* Skills */}
 
         <Section>
           <SectionTitle>Technical Skills</SectionTitle>
           <List>
             <ListItem><strong>Languages:</strong> Java, Python, JavaScript</ListItem>
             <ListItem><strong>Frontend:</strong> HTML, CSS, React</ListItem>
-            <ListItem><strong>Backend:</strong> Node.js, Express.js, REST APIs, Spring Boot (Basic)</ListItem>
+            <ListItem><strong>Backend:</strong> Node.js, Express.js, REST APIs</ListItem>
             <ListItem><strong>Database:</strong> MongoDB, MySQL</ListItem>
             <ListItem><strong>Tools:</strong> Git, GitHub</ListItem>
           </List>
@@ -261,9 +290,7 @@ const Resume = () => {
 
         {/* Projects */}
 
-        {/* ===== Projects ===== */}
-
-<Section>
+       <Section>
   <SectionTitle>Projects</SectionTitle>
   <List>
 
@@ -294,9 +321,8 @@ const Resume = () => {
           <SectionTitle>Experience</SectionTitle>
           <List>
             <ListItem>
-              <strong>Full Stack Web Development Intern</strong> – EDU TANTR Ventures Pvt. Ltd.<br/>
-              <em>July 2025</em><br/>
-              Worked on frontend UI, backend API integration,
+              <strong>Full Stack Web Development Intern</strong> – EDU TANTR Ventures Pvt. Ltd. –
+              July 2025<br/> Worked on frontend UI, backend API integration,
               and assisted in deployment processes.
             </ListItem>
           </List>
@@ -317,6 +343,7 @@ const Resume = () => {
       </Container>
 
       <ButtonWrapper>
+
         <BackButton onClick={() => navigate("/")}>
           <FaArrowLeft />
           Back
@@ -325,6 +352,7 @@ const Resume = () => {
         <DownloadButton onClick={downloadPDF}>
           Download as PDF
         </DownloadButton>
+
       </ButtonWrapper>
     </>
   );
