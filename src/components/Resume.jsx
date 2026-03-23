@@ -152,12 +152,12 @@ const Resume = () => {
       filename: "Kumudhasri_Resume.pdf",
 
       image: {
-        type: "png",
-        quality: 1
+        type: "jpeg",
+        quality: 0.7
       },
 
       html2canvas: {
-        scale: 3,
+        scale: 1.5,
         useCORS: true,
         letterRendering: true,
         scrollY: 0
